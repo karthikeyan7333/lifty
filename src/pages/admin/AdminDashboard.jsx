@@ -1,3 +1,4 @@
+import { API_URL } from "../config/api.js";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -17,7 +18,7 @@ function AdminDashboard() {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        "http://localhost:5000/api/admin/dashboard",
+        `${API_URL}/api/admin/dashboard`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -39,7 +40,7 @@ function AdminDashboard() {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        "http://localhost:5000/api/admin/providers/pending",
+        `${API_URL}/api/admin/providers/pending`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -70,7 +71,7 @@ function AdminDashboard() {
       const token = localStorage.getItem("token");
 
       const response = await axios.patch(
-        `http://localhost:5000/api/admin/providers/${providerId}/verification`,
+        `${API_URL}/api/admin/providers/${providerId}/verification`,
         {
           status,
         },
@@ -348,7 +349,7 @@ function AdminDashboard() {
 
                         {provider.idProof ? (
                           <a
-                            href={`http://localhost:5000/uploads/${provider.idProof}`}
+                            href={`${API_URL}/uploads/${provider.idProof}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="btn btn-outline-primary"

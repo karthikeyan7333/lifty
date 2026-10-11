@@ -1,3 +1,4 @@
+import { API_URL } from "../config/api.js";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -19,7 +20,7 @@ function ManageAccidents() {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        "http://localhost:5000/api/accidents/admin",
+        `${API_URL}/api/accidents/admin`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -55,7 +56,7 @@ function ManageAccidents() {
       const token = localStorage.getItem("token");
 
       const response = await axios.patch(
-        `http://localhost:5000/api/accidents/admin/${id}/status`,
+        `${API_URL}/api/accidents/admin/${id}/status`,
         {
           status,
         },

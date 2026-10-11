@@ -1,3 +1,4 @@
+import { API_URL } from "../config/api.js";
 import { useState } from "react";
 import axios from "axios";
 
@@ -25,7 +26,7 @@ function CreateRide() {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        "http://localhost:5000/api/rides",
+        `${API_URL}/api/rides`,
         formData,
         {
           headers: {

@@ -1,3 +1,4 @@
+import { API_URL } from "../config/api.js";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -26,7 +27,7 @@ function RegisterForm() {
   const loadCaptcha = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/auth/captcha"
+        `${API_URL}/api/auth/captcha`
       );
 
       setCaptchaId(response.data.captchaId);
@@ -70,7 +71,7 @@ if (!passwordRegex.test(password)) {
       setLoading(true);
 
       const response = await axios.post(
-        "http://localhost:5000/api/auth/register/request-otp",
+        `${API_URL}/api/auth/register/request-otp`,
         {
           fullName,
           email,
@@ -119,7 +120,7 @@ if (!passwordRegex.test(password)) {
       setLoading(true);
 
       const response = await axios.post(
-        "http://localhost:5000/api/auth/register/verify-otp",
+        `${API_URL}/api/auth/register/verify-otp`,
         {
           email,
           otp,

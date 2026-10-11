@@ -1,3 +1,4 @@
+import { API_URL } from "../config/api.js";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -29,7 +30,7 @@ function ProviderCreateRide() {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        "http://localhost:5000/api/rides",
+        `${API_URL}/api/rides`,
         {
           from: formData.from,
           to: formData.to,

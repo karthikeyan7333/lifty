@@ -1,3 +1,4 @@
+import { API_URL } from "../config/api.js";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -12,7 +13,7 @@ useEffect(() => {
   const fetchRide = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/rides/${id}`
+        `${API_URL}/api/rides/${id}`
       );
 
       setRide(response.data);
@@ -31,7 +32,7 @@ const handleBooking = async () => {
     const token = localStorage.getItem("token");
 
     const response = await axios.post(
-      "http://localhost:5000/api/bookings",
+      `${API_URL}/api/bookings`,
       {
         rideId: id,
       },

@@ -1,3 +1,4 @@
+import { API_URL } from "../config/api.js";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -11,7 +12,7 @@ function ManageUsers() {
         const token = localStorage.getItem("token");
 
         const response = await axios.get(
-          "http://localhost:5000/api/admin/users",
+          `${API_URL}/api/admin/users`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -33,7 +34,7 @@ function ManageUsers() {
       const token = localStorage.getItem("token");
 
       await axios.delete(
-        `http://localhost:5000/api/admin/users/${id}`,
+        `${API_URL}/api/admin/users/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

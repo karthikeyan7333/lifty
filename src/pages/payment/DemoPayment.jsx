@@ -1,3 +1,4 @@
+import { API_URL } from "../config/api.js";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -46,7 +47,7 @@ function DemoPayment() {
         const token = localStorage.getItem("token");
 
         const response = await axios.get(
-          "http://localhost:5000/api/bookings/my-bookings",
+          `${API_URL}/api/bookings/my-bookings`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -90,7 +91,7 @@ function DemoPayment() {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        `http://localhost:5000/api/payments/${bookingId}/pay`,
+        `${API_URL}/api/payments/${bookingId}/pay`,
         {},
         {
           headers: {
@@ -131,7 +132,7 @@ function DemoPayment() {
 
       // 1. Create Razorpay order
       const orderResponse = await axios.post(
-        `http://localhost:5000/api/payments/${bookingId}/razorpay/order`,
+        `${API_URL}/api/payments/${bookingId}/razorpay/order`,
         {},
         {
           headers: {
@@ -177,7 +178,7 @@ function DemoPayment() {
           try {
             // 3. Send payment details to backend
             const verifyResponse = await axios.post(
-              "http://localhost:5000/api/payments/razorpay/verify",
+              `${API_URL}/api/payments/razorpay/verify`,
               {
                 bookingId,
 

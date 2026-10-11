@@ -1,3 +1,4 @@
+import { API_URL } from "../config/api.js";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -28,7 +29,7 @@ function Safety() {
       setLoadingBookings(true);
 
       const response = await axios.get(
-        "http://localhost:5000/api/bookings/my-bookings",
+        `${API_URL}/api/bookings/my-bookings`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -95,7 +96,7 @@ function Safety() {
       setSubmittingReport(true);
 
       const response = await axios.post(
-        "http://localhost:5000/api/accidents",
+        `${API_URL}/api/accidents`,
         {
           bookingId: selectedBooking,
           description,

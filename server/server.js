@@ -18,7 +18,22 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+const allowedOrigins = new Set(
+  [process.env.FRONTEND_URL, "http://localhost:5173", "http://127.0.0.1:5173"]
+    .filter(Boolean)
+    .map((origin) => origin.replace(/\/$/, ""))
+);
+
+app.use(
+  cors({
+    origin(origin, callback) {
+      // Requests without an Origin header (for example, server-to-server health checks)
+      // are not subject to browser CORS enforcement.
+      if (!origin || allowedOrigins.has(origin)) return callback(null, true);
+      return callback(new Error("Origin not allowed by CORS"));
+    },
+  })
+);
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 

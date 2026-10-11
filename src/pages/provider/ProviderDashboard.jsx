@@ -1,3 +1,4 @@
+import { API_URL } from "../config/api.js";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -24,8 +25,8 @@ function ProviderDashboard() {
         };
 
         const [ridesResponse, bookingsResponse] = await Promise.all([
-          axios.get("http://localhost:5000/api/rides/my-rides", config),
-          axios.get("http://localhost:5000/api/bookings/provider", config),
+          axios.get(`${API_URL}/api/rides/my-rides`, config),
+          axios.get(`${API_URL}/api/bookings/provider`, config),
         ]);
 
         setRides(ridesResponse.data);

@@ -1,3 +1,4 @@
+import { API_URL } from "../config/api.js";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -11,7 +12,7 @@ function ProviderBookings() {
         const token = localStorage.getItem("token");
 
         const response = await axios.get(
-          "http://localhost:5000/api/bookings/provider",
+          `${API_URL}/api/bookings/provider`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

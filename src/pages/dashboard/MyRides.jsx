@@ -1,3 +1,4 @@
+import { API_URL } from "../config/api.js";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -10,7 +11,7 @@ function MyRides() {
         const token = localStorage.getItem("token");
 
         const response = await axios.get(
-          "http://localhost:5000/api/rides/my-rides",
+          `${API_URL}/api/rides/my-rides`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -37,7 +38,7 @@ function MyRides() {
     const token = localStorage.getItem("token");
 
     const response = await axios.delete(
-      `http://localhost:5000/api/rides/${id}`,
+      `${API_URL}/api/rides/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

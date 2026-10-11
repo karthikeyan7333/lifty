@@ -1,3 +1,4 @@
+import { API_URL } from "../config/api.js";
 import { useEffect, useState } from "react";
 
 import {
@@ -48,7 +49,7 @@ const [error, setError] = useState("");
         setError("");
 
         const response = await fetch(
-          `http://localhost:5000/api/rides/geocode?from=${encodeURIComponent(
+          `${API_URL}/api/rides/geocode?from=${encodeURIComponent(
             searchFrom
           )}&to=${encodeURIComponent(searchTo)}`
         );

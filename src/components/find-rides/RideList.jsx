@@ -1,3 +1,4 @@
+import { API_URL } from "../config/api.js";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import RideCard from "./RideCard";
@@ -9,7 +10,7 @@ function RideList({ from, to }) {
     const fetchRides = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/rides"
+          `${API_URL}/api/rides`
         );
 
         setRides(response.data);

@@ -1,3 +1,4 @@
+import { API_URL } from "../config/api.js";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -11,7 +12,7 @@ function MyBookings() {
         const token = localStorage.getItem("token");
 
         const response = await axios.get(
-          "http://localhost:5000/api/bookings/my-bookings",
+          `${API_URL}/api/bookings/my-bookings`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -38,7 +39,7 @@ function MyBookings() {
     const token = localStorage.getItem("token");
 
     const response = await axios.delete(
-      `http://localhost:5000/api/bookings/${bookingId}`,
+      `${API_URL}/api/bookings/${bookingId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
